@@ -19,6 +19,6 @@ public class Enemy : MonoBehaviour
 
     private void Move()
     {
-        transform.Translate(_direction.normalized * Time.deltaTime);
+        transform.position += _direction * Time.deltaTime;
     }
 }
