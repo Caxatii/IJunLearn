@@ -28,13 +28,13 @@ public class EnemySpawner : MonoBehaviour
 
     private void Spawn()
     {
-        int min = -179;
-        int max = 179;
-
         Transform point = _points[Random.Range(0, _points.Length)];
 
         Enemy enemy = Instantiate(_prefab);
+        enemy.SetTarget(new Vector2(GetRandom(), GetRandom()));
         enemy.transform.position = point.position;
-        enemy.transform.rotation = Quaternion.Euler(0, 0, Random.Range(min, max));
     }
+
+    private float GetRandom() =>
+        Random.Range(-1f, 1f);
 }

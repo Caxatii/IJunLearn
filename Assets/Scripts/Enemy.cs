@@ -2,13 +2,24 @@
 
 public class Enemy : MonoBehaviour
 {
-    private void FixedUpdate()
+    private Vector3 _direction;
+
+
+    private void Update()
     {
+        if (_direction == null)
+            return;
+
         Move();
+    }
+
+    public void SetTarget(Vector2 target)
+    {
+        _direction = target.normalized;
     }
 
     private void Move()
     {
-        transform.Translate(transform.up * Time.fixedDeltaTime, Space.World);
+        transform.Translate(_direction.normalized * Time.deltaTime);
     }
 }
