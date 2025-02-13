@@ -2,24 +2,29 @@
 
 public class Enemy : MonoBehaviour
 {
-    private Vector3 _direction;
+    private Transform _target;
 
     private void Update()
     {
-        if (_direction == null)
+        if (_target == null)
             return;
 
         Move();
     }
 
-    public void SetTarget(Vector2 target)
+    public void SetTarget(Transform target)
     {
-        _direction = target.normalized;
-        transform.up = target;
+        _target = target;
+        transform.up = (Vector2)GetDirection();
     }
 
     private void Move()
     {
-        transform.position += _direction * Time.deltaTime;
+        transform.position += GetDirection() * Time.deltaTime;
+    }
+
+    private Vector3 GetDirection()
+    {
+        return (_target.position - transform.position).normalized;
     }
 }
