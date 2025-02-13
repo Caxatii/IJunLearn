@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float _delay;
 
     [SerializeField] private Enemy _prefab;
-    [SerializeField] private Transform[] _points;
+    [SerializeField] private Target _target;
 
     private void Start()
     {
@@ -28,11 +28,9 @@ public class EnemySpawner : MonoBehaviour
 
     private void Spawn()
     {
-        Transform point = _points[Random.Range(0, _points.Length)];
-
         Enemy enemy = Instantiate(_prefab);
-        enemy.SetTarget(new Vector2(GetRandom(), GetRandom()));
-        enemy.transform.position = point.position;
+        enemy.SetTarget(_target.transform);
+        enemy.transform.position = transform.position;
     }
 
     private float GetRandom() =>
