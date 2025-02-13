@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     public void SetTarget(Vector2 target)
     {
         _direction = target.normalized;
+        transform.up = target;
     }
 
     private void Move()
