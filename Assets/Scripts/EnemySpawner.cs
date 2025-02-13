@@ -9,11 +9,16 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Enemy _prefab;
     [SerializeField] private Transform[] _points;
 
-    private IEnumerator Start()
+    private void Start()
+    {
+        StartCoroutine(Run());
+    }
+
+    private IEnumerator Run()
     {
         var delay = new WaitForSeconds(_delay);
 
-        while(_isWorking)
+        while (_isWorking)
         {
             Spawn();
 

@@ -2,14 +2,12 @@
 
 public class Enemy : MonoBehaviour
 {
-    private void Awake()
+    private void FixedUpdate()
     {
-        float destroyTime = 10;
-
-        Destroy(gameObject, destroyTime);
+        Move();
     }
 
-    private void FixedUpdate()
+    private void Move()
     {
         transform.Translate(transform.up * Time.fixedDeltaTime, Space.World);
     }
